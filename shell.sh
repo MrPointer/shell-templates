@@ -1,5 +1,20 @@
 #!/bin/sh
 
+show_usage() {
+    cat <<TEMPLATE_USAGE
+Usage: $PROGRAM_NAME [OPTION]... 
+
+...Description [REPLACE-ME]...
+
+Example: $PROGRAM_NAME -h [REPLACE-ME]
+
+Options:
+  -h, --help        Show this message and exit
+  -v, --verbose     Enable verbose output
+-----------------------------------------------------"
+TEMPLATE_USAGE
+}
+
 ###
 # Set default color codes for colorful prints
 ###
