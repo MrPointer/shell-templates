@@ -2,11 +2,11 @@
 
 show_usage() {
     cat <<TEMPLATE_USAGE
-Usage: $PROGRAM_NAME [OPTION]... 
+Usage: $v_PROGRAM_NAME [OPTION]... 
 
 ...Description [REPLACE-ME]...
 
-Example: $PROGRAM_NAME -h [REPLACE-ME]
+Example: $v_PROGRAM_NAME -h [REPLACE-ME]
 
 Options:
   -h, --help        Show this message and exit
@@ -84,6 +84,15 @@ set_defaults() {
 }
 
 main() {
+    case "$(uname -s)" in
+    Linux*) v_READLINK_PROGRAM="readlink" ;;
+    Darwin*) v_READLINK_PROGRAM="greadlink" ;;
+    esac
+
+    v_PROGRAM_PATH="$($v_READLINK_PROGRAM -f "$0")"
+    v_PROGRAM_NAME="$(basename "$v_PROGRAM_PATH")"
+    v_PROGRAM_DIR="$(dirname "$v_PROGRAM_PATH")"
+
     if ! set_defaults; then
         error "Failed setting defaults, aborting"
         return 1
@@ -93,7 +102,7 @@ main() {
         error "Failed parsing arguments, aborting"
         return 2
     fi
-    
+
     if ! set_globals; then
         error "Failed setting globals, aborting"
         return 3
@@ -111,4 +120,3 @@ main() {
 # Call main and don't do anything else
 # It will pass the correct exit code to the OS
 main "$@"
-
