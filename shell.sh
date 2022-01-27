@@ -18,26 +18,26 @@ TEMPLATE_USAGE
 ###
 # Set default color codes for colorful prints
 ###
-RED_COLOR="\033[0;31m"
-GREEN_COLOR="\033[0;32m"
-YELLOW_COLOR="\033[1;33m"
-BLUE_COLOR="\033[0;34m"
-NEUTRAL_COLOR="\033[0m"
+v_RED_COLOR="\033[0;31m"
+v_GREEN_COLOR="\033[0;32m"
+v_YELLOW_COLOR="\033[1;33m"
+v_BLUE_COLOR="\033[0;34m"
+v_NEUTRAL_COLOR="\033[0m"
 
 error() {
-    printf "${RED_COLOR}%s${NEUTRAL_COLOR}\n" "$@"
+    printf "${v_RED_COLOR}%s${v_NEUTRAL_COLOR}\n" "$@"
 }
 
 warning() {
-    printf "${YELLOW_COLOR}%s${NEUTRAL_COLOR}\n" "$@"
+    printf "${v_YELLOW_COLOR}%s${v_NEUTRAL_COLOR}\n" "$@"
 }
 
 info() {
-    printf "${BLUE_COLOR}%s${NEUTRAL_COLOR}\n" "$@"
+    printf "${v_BLUE_COLOR}%s${v_NEUTRAL_COLOR}\n" "$@"
 }
 
 success() {
-    printf "${GREEN_COLOR}%s${NEUTRAL_COLOR}\n" "$@"
+    printf "${v_GREEN_COLOR}%s${v_NEUTRAL_COLOR}\n" "$@"
 }
 
 ###
@@ -65,7 +65,7 @@ parse_arguments() {
             exit 0
             ;;
         -v | --verbose)
-            VERBOSE=true
+            v_VERBOSE=true
             shift
             ;;
         *)
@@ -80,7 +80,7 @@ parse_arguments() {
 # Set default values to be used throughout the script (global variables).
 ###
 set_defaults() {
-    VERBOSE=false
+    v_VERBOSE=false
 }
 
 main() {
