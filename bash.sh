@@ -165,7 +165,7 @@ function main {
     fi
 
     if ! parse_arguments "$@"; then
-        error "Couldn't parse arguments, aborting"
+        error "Failed parsing arguments, aborting"
         return 2
     fi
 
