@@ -14,7 +14,6 @@ Example: $PROGRAM_NAME -h [REPLACE-ME]
 Options:
   -h, --help        Show this message and exit
   -v, --verbose     Enable verbose output
------------------------------------------------------"
 TEMPLATE_USAGE
 }
 
