@@ -20,11 +20,11 @@ TEMPLATE_USAGE
 ###
 # Set default color codes for colorful prints.
 ###
-V_RED_COLOR="\033[0;31m"
-V_GREEN_COLOR="\033[0;32m"
-V_YELLOW_COLOR="\033[1;33m"
-V_BLUE_COLOR="\033[0;34m"
-V_NEUTRAL_COLOR="\033[0m"
+RED_COLOR="\033[0;31m"
+GREEN_COLOR="\033[0;32m"
+YELLOW_COLOR="\033[1;33m"
+BLUE_COLOR="\033[0;34m"
+NEUTRAL_COLOR="\033[0m"
 
 ###
 # Prints all given strings with the given color, appending a newline in the end.
@@ -41,23 +41,23 @@ function cecho {
     done
 
     # shellcheck disable=SC2059
-    printf "${1}${string_placeholders}${V_NEUTRAL_COLOR}\n" "${@:2}"
+    printf "${1}${string_placeholders}${NEUTRAL_COLOR}\n" "${@:2}"
 }
 
 function error {
-    cecho "$V_RED_COLOR" "$@" >&2
+    cecho "$RED_COLOR" "$@" >&2
 }
 
 function warning {
-    cecho "$V_YELLOW_COLOR" "$@"
+    cecho "$YELLOW_COLOR" "$@"
 }
 
 function success {
-    cecho "$V_GREEN_COLOR" "$@"
+    cecho "$GREEN_COLOR" "$@"
 }
 
 function info {
-    cecho "$V_BLUE_COLOR" "$@"
+    cecho "$BLUE_COLOR" "$@"
 }
 
 ###
@@ -108,7 +108,7 @@ function parse_arguments {
             exit 0
             ;;
         -v | --verbose)
-            V_VERBOSE=true
+            VERBOSE=true
             shift
             ;;
         --)
@@ -131,7 +131,7 @@ function parse_arguments {
 # Set default values to be used throughout the script (global variables).
 ###
 function set_defaults {
-    V_VERBOSE=false
+    VERBOSE=false
 }
 
 ###
