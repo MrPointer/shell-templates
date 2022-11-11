@@ -108,7 +108,7 @@ main() {
         return 3
     fi
 
-    if ! invoke_actual_installation "$@"; then
+    if ! do_something "$@"; then
         error "Failed [REPLACE-ME]"
         return 4
     fi
